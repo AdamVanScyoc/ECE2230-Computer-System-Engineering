@@ -1,0 +1,39 @@
+todo: undef debug in all files
+
+testing:
+-priority.c
+	Xpriority_init: 
+	Xpriority_finalize 
+	Xpriority_insert()
+	Xpriority_remove() 
+	Xpriority_full()
+	Xpriority_empty()
+
+-queue.c
+	Xqueue_init()
+	Xqueue_finalize() 
+	Xqueue_size()
+	Xqueue_full()
+	Xqueue_peek()
+	Xqueue_insert()
+	Xqueue_remove()
+
+-avanscy.assign3.c
+	Xargument parsing
+	Xinitialize queues
+	Xinitialize priority/event queue 
+	Xfinalize queues
+	Xfinalize event queue
+	Xmalloc new event and customer
+	Xschedule arrive event at t=0 and put in event queue
+	-main event processing while loop
+		-EV_ARRIVE
+		-EV_ENQUEUE
+	Xfree customer record
+
+To Be Written:
+-avanscy.assign3.c
+	-main event processing while loop
+		-EV_CHECKOUT
+		-EV_LEAVE
+	- print overall stats for customerS

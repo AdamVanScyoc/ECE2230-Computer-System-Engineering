@@ -1,0 +1,15 @@
+avanscy.assign2: avanscy.assign2.o hack_inventory.o hack_object.o list.o
+	gcc avanscy.assign2.o hack_inventory.o hack_object.o list.o -Wall -g -o avanscy.assign2
+
+avanscy.assign2.o: avanscy.assign2.c list.h hack_inventory.h hack_object.h
+	gcc avanscy.assign2.c -c -Wall -g
+
+hack_inventory.o : hack_inventory.c list.h hack_object.h hack_inventory.h
+	gcc hack_inventory.c -c -Wall -g
+
+hack_object.o : hack_object.h hack_object.c
+	gcc hack_object.c -c -Wall -g
+
+list.o : list.c list.h
+	gcc list.c -c -Wall -g
+

@@ -1,0 +1,45 @@
+//ToDo: check w/ test program
+
+list.c
+TO Be Tested:
+	X list_init()
+	X list_finalize()
+	X list_insert()
+	X list_append()
+	X list_insert_before()
+	X list_insert_after()
+	X list_remove()
+	X list_next()
+	X list_prev()
+	X list_last()
+	X list_curr()
+
+hack_object.c
+To Be Tested:
+	X h_object_print()
+
+hack_inventory.c
+To Be Tested:
+	X h_inventory_create()
+	X h_inventory_add()
+	X h_inventory_destroy()
+	X h_inventory_find_id()
+	X h_inventory_delete()
+	X h_inventory_first()
+	X h_inventory_next()
+
+To Be Written:
+
+avanscy.assign2.c
+To Be Tested:
+	X ADD
+	X LIST
+	X QUIT
+	X LOOK
+	X DEL
+	X FIRST
+	X NEXT
+	X LAST
+	X PREV
+
+To Be Written:

@@ -1,0 +1,7 @@
+X) delete commented out code
+X) test script for command line arg's w/ valgr
+X) #undef DEBUG
+X) document
+X) last read-through assignment text
+6) readme.txt
+

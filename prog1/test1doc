@@ -1,0 +1,68 @@
+//Attempt to list empty db
+//Attempt to del 0 from empty db
+//Attempt to Look 0 from empty db
+//ADD 1 guitar
+
+
+
+
+
+
+
+
+
+
+//Attempt to List when guitardb contains only 1 guitar
+//Attempt to Look when guitar db contains only one guitar
+//Attempt to del 0 when guitardb contains only one guitar
+//attempt to del 1 (which doesn't exist
+//ADD 3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Attempt to list
+//Attempt to del 1
+//LIST
+//Quit

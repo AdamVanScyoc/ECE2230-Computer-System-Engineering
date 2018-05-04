@@ -1,0 +1,71 @@
+LIST
+DEL 0
+LOOK 0
+ADD
+Gisbon
+Les Paul
+Deluxe
+SB
+1967
+Sun Burst
+6
+3
+H
+S
+D
+LIST
+LOOK 1
+DEL 1
+DEL 2
+ADD
+Gisbon
+Les Paul
+Deluxe
+SB
+1967
+Sun Burst
+6
+3
+H
+S
+D
+ADD
+Fender
+Stratocaster
+Squire
+SB
+1998
+Candy Apple Red
+7
+2
+S
+S
+S
+ADD
+Gibson
+SG
+Custom
+SB
+1976
+Violet
+6
+3
+H
+D
+D
+ADD
+Fender
+Telecaster
+Standard
+SB
+1970
+Yellow
+6
+3
+S
+S
+S
+LIST
+DEL 2
+LIST
+QUIT

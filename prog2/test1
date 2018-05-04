@@ -1,0 +1,81 @@
+DEL 0
+DEL 1
+DEL 999
+ADD
+5
+5
+5
+5
+5
+5
+5
+5
+LIST
+DEL 0
+DEL 1
+DEL 999
+LIST
+ADD
+5
+5
+5
+5
+5
+5
+5
+5
+ADD
+4
+4
+4
+4
+4
+4
+4
+4
+ADD
+3
+3
+3
+3
+3
+3
+3
+3
+ADD
+2
+2
+2
+2
+2
+2
+2
+2
+ADD
+1
+1
+1
+1
+1
+1
+1
+1
+ADD
+0
+0
+0
+0
+0
+0
+0
+0
+LIST
+DEL 1
+DEL 2
+DEL 3
+DEL 4
+DEL 5
+DEL 6
+DEL 7
+LIST
+QUIT

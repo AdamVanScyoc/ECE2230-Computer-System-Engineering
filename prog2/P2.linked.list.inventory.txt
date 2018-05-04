@@ -1,0 +1,27 @@
+ECE 2230 Programming Assignment 2
+Due data is on Canvas.
+
+Linked List Program
+
+Construct an inventory for the hack game that stores game objects in a
+double-linked list.
+
+The following header files are provided:
+
+list.h
+hack_object.h
+hack_inventory.h
+
+Your assignment is to implement all of the functions in these header
+files in the corresponding .c file (list.c, hack_object.c, and
+hack_inventory.c). Refer to documentation above each function
+declaration.
+
+It must be possible to create multiple independent instances of list
+and h_inventory. In a practical sense this means no static or global
+variables should be defined in list.c or hack_inventory.c.
+
+The user interface of the main program (assign2.c) should be extended
+to include the following commands:
+
+ADD, DEL, LOOK, LIST (as before), FIRST, LAST, NEXT, PREV

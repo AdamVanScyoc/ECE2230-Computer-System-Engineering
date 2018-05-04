@@ -1,0 +1,177 @@
+ECE 2230
+Programming Assignment 4
+Hashing with separate chaining
+
+We are going to analyze the vocabulary in two books.  You will be provided with the text of two books edited to remove certain troublesome characters, including punctuation.  There should be at least one whitespace character (space, tab, newline) between every pair of two consecutive words.  Words may be as small as one character, or may be much larger, but you can assume no words are longer than 100 characters.  All words exist on a single line, there is no hyphenation.  All letters are lower case.  You must used the word files given as part of the project without editing them.
+
+Hash Table
+
+You will need a hash table that must at a minimum provide functions to insert and search for any entry (you will not be deleting, but you can add that if you like):
+
+struct hash_table
+{
+	struct linked_list **table; /* an array of linked lists - dynamically allocated */
+	int size;                   /* number of elements in the array */
+	etc, …                      /* whatever else you need */
+}
+
+int hash_insert(struct hash_table *h, char *key, void *data);
+void *hash_search(struct hash_table *h, char *key);
+
+You will need a hash function, which should be a static function in the hash table module to convert the string into a properly sized integer to index the table.  Use a folding algorithm similar to what is show in the book or in class.
+
+You will have other functions like “init” and maybe an “iterator” that you will want to add as well.  The key for the hash table is the word itself in a null terminated char array, and you must have space for that word in the hash table (Do not simply copy a pointer to the word into the table, you must copy the word into an array).  For each word in the hash table you should have at least two counters that indicate how many times that word was found in each of two books. These can just be integers.  For example:
+
+struct book_word
+{
+	char word[128];   /* null terminated ascii key */
+	int count[2];     /* 0 for the first book, 1 for the second book */
+	etc, …            /* whatever else you need */
+}
+
+When you search for a word, if the word is found, your hash table should return a pointer to the record (which contains the word, the two counters, and whatever else you want).  If it returns NULL, the word was not found.  DO NOT enter a second entry if the word you are searching for is found!  Instead edit the record by increment the correct counter;
+
+Main Routine
+
+Now, you will open the first file, read each word one at time, and for each word, search for it in the hash table, and either insert it if not found, or update the count for the first book if it is.  Then you will open the second book and do exactly the same thing, only this time you will update counts for the second book.  Once this is done, you should have a hash table fill of word entries - no more then one for each word - complete with the counts of how many times the word appeared in each book.  You should plan to have a module for manipulating files, and another for performing this routine - the main() function should be pretty simple.  You should have a function to read command line arguments (at least the input file names) and it should use getopt to get those flags.  You may add other flags to the command line as needed.
+
+Statistics
+
+Now, the last phase is the generate some statistics.  There are several things you must do:
+
+- count how many lines of each book you read
+- count the number of words in each book you read
+- count the number of unique words in each book
+- count how many words appear in BOTH books at least once
+
+- Show the 5 longest words in each book and the number of times they appear
+- Show the 5 longest words used in both books and the number of times they appear
+- Show the 15 most used and 5 least used words in each book
+- show the 15 most used and 5 least used common words in both books
+
+Pretty much all of these will require you to at least iterate through all of the words in the hash table.  There are many ways to do this, including using other data structures (like a linked list of a tree) if you like.  THe choice of implementation is up to you.
+
+You are free to implement your code however you want - HOWEVER, you are expected to use good design principles, modularity, multiple files, information hiding, etc. as we have discussed in class.  If you turn in one .c file with all of the code, you will lose points.  If you turn in a very long main() function, you will lose points.  Use top-down design to orangize your code, and bottom up design by using structures and algorithms we have learned.  You may use code from previous projects if that help AS LONG AS YOU IDENTIFY IT as such.  Turn in the reused code along with your new code.  If you are not sure, ask. 
+
+Your code should be clean and easy to read.  Use consistent indentation (at least 3 chars) and placement of braces.  Name your variables and functions in an easy-to-read manner,  But block comments abocve each function and in-line comments that make it easier to understand the code.
+
+Along with the usual source code comments you must submit a README.txt file that describes the purpose of each file in your project. The readme file must explain how to compile and link your main executable. It must also describe the syntax of any command-line arguments used to run your main program.
+
+Statistics Format
+
+Your output should look like this:
+
+ECE2230 Fall 2017 Text Hashing Project
+<your name>
+
+Dracula
+
+Number of lines processed         XXXXXX
+Number of words processed         XXXXXX
+Number of Unique words            XXXXXX
+
+5 largest words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+15 most frequently used words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+5 least frequently used words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+Frankenstine
+
+Number of lines processed         XXXXXX
+Number of words processed         XXXXXX
+Number of Unique words            XXXXXX
+
+5 largest words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+15 most frequently used words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+5 least frequently used words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+Common vocabulary (appears in both)
+
+Number of Unique words            XXXXXX
+
+5 largest common words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+15 most frequently used common words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+
+5 least frequently used common words
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>
+   <word>                   <times used>

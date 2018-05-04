@@ -1,0 +1,282 @@
+Unit testing - Testing a given function (or unit)
+	-Performed first
+	
+Integration testing - Checkng that combinations of the functions (that have already been unit tested) work together properly
+	-Performed after unit testing
+	
+Acceptance testing - tests that are run before a system is released into active service
+	
+Regression testing - checking that everything that used to work (prior to some change to the finished product) still continues to work properly.
+	
+Black-box testing - Black-box testing is a method of software testing that examines the functionality of an application without peering into its internal structures or workings.
+	 This method of test can be applied virtually to every level of software testing: unit,
+	 integration, system and acceptance. It is sometimes referred to as specification-based testing.
+	
+White-box testing - a method of testing software that tests internal structures or workings of an application, as opposed to its functionality (i.e. black-box testing).
+	 In white-box testing an internal perspective of the system, as well as programming skills, are used to design test cases.
+	 The tester chooses inputs to exercise paths through the code and determine the expected outputs.
+	 This is analogous to testing nodes in a circuit, e.g. in-circuit testing (ICT).
+	 White-box testing can be applied at the unit, integration and system levels of the software testing process.
+	 Although traditional testers tended to think of white-box testing as being done at the unit level,
+	 it is used for integration and system testing more frequently today.
+	
+	 A program with high code coverage, measured as a percentage, has had more of its source code executed during testing which suggests 
+	it has a lower chance of containing undetected software bugs compared to a program with low code coverage.
+	Types: Function Coverage,  Statement Coverage, Branch Coverage, Path Coverage, Condition Coverage
+
+Function Coverage - Has each function (or subroutine) in the program been called?
+
+Statement coverage - Has each statement in the program been executed?
+	- a white box test design technique which involves execution of all the executable statements in the source code at least once.
+	 It is used to calculate and measure the number of statements in the source code which can be executed given the requirements. 
+	Statement Coverage = Number of Statements in a Program that were executed by a Test/Total Number of Statements in the Program X 100
+	
+Branch coverage -  Has each branch of each control structure (such as in if and case statements) been executed?
+	 For example, given an if statement, have both the true and false branches been executed?
+	 Another way of saying this is, has every edge in the program been executed?
+	
+Path coverage - Has every possible route through a given part of the code been executed?
+	
+Analysis of algorithms - see textbook page 225-247 for exampleso
+	-often useful in Algorithm Analyses: Sums (sigma notation) and Recurrence relations; because Algorithms always achieve their overall
+	net results either 
+		1) by composing small steps, whose stepwise costs can be summed, or 
+		2) by decomposing the overall problem into subproblems, solving the subproblems, and combining 
+		the subproblem solutions
+	-Sums of stepwise costs often arise when analyzing iterative algorithms
+	- Recurrence relations often arise when analyzing recursive algorithms
+
+Big-O notation - Used for taking talking about the complexity classes of algorithms
+	-Big O Notation for quadratic function f(x) = an^2 + bn + c is O(n^2) (use oly the dominant term)
+	-best case
+	-worst case
+	-average
+	
+Complexity classes (1, log n, n, n log n, n 2 , n 3 , 2 n ) - 
+	O(1)	-Techniqueues for searching using hashing.... If a hash table is not less than 80% full,
+		the average search times take O(1) time.
+		-An algorithm that chooses a single random element of an array
+		-Constant amount of time, no matter problem set size N
+	O(log n)-average search time of searching balanced Binary Search Tree
+		-binary searching in ordered arrays
+	O(n)	-Address Calculation Sorting (ProxmapSort, RadixSort)
+		-the parsing algorithm in a C compiler is usually a linear algorithm that runs in time proportional to the length of your C program
+			(measured in characters)
+		-string pattern matching algorithms (the algorithm that searches for ocurrences of a given word in your word processor)
+	O(n log n)-QuickSort, HeapSort, MergeSort
+	O(n^2)	-SelecxtionSort, InsertionSort
+	O(n^3)	-algorithm for multiplying two square N x N matices
+	o(2^n)	-"Exponential" time complexity
+		-Hanoi Towers
+		-Traveling Sales[person of non-binary, unassumed gender]
+
+Recurrence relations - mathematical statement that defines a funciton in terms of itself:
+			T(n) = an + b + T(n - 1), n > 0
+		-must include a base case, just like a recursive function
+	
+Linear Data Structures - collections of components arranged in a straight line, When we add or remove components of linear data structures,
+	they grow or shrink
+	- If we obey certain restrictions on the places where we add or remove elements, we obtain two important special cases 
+	of linear data structures -stacks and queues
+	-stacks and queues can have either linked or sequential representations
+
+Stacks - if we restrict the growth of a linear data structure so that the new components can be added and removed only at one end
+	-LIFO
+	-sometimes refered to as "Push-Down Stacks" (kind of like pushing a bullet into the magazine of a gun when reloading)
+	-The following operations are defined for Queues
+		-Initialize the stack S
+		-Determnine whether S is empty
+		-Det. whether S is full
+		-Push a new item onto the top of S
+		-If S is non-empty, pop an item from the top of S	
+
+Queues - new components can be added at one end but removal of components must take place at the opposite end
+	-FIFO
+	-The following operations are defined for Queues
+		-Initialize the queue
+		-Determine wether or not the Q is empty
+		-Determine whether Q is full
+		-Insert a new item onto the rear of the Q
+		-Provided Q is non-empty, remove an iterm from the front of Q
+	
+Push - the act of adding a new object to a stack
+	-inverse of Pop
+	
+Pop - the act of removing an object from the top of a push-down stack
+	-inverse of Push
+	
+Enqueue - the act of inserting an item onto the rear of a queue
+	
+Dequeue - the act of removing an item from the front of a queue
+	
+Check for balanced parentheses - use of stacks
+	called "Parsing, Evaluation and Backtracking" algorithms
+	-in a C compiler, substatements in side of parenthesis (as well as statements in {}'s and []'s)
+	are often nested within one another, thus the use of the stack. each new level of nesting
+	is an item pushed onto the stack
+	
+Evaluate postfix expressions - Uses the stack ADT
+	infix notation - in algebraic expressions, a binary operator is placed between a left and right operand - type used by humans
+		Left BinaryOperator Right => L B R
+	postfix expressions - can be used to specify a parenthesis-free notation. 
+		-the postfix expression L R B corresponds to infix expression L B R
+	
+Runtime stack in C - see page 275
+	-a collection of information about a function call, called a Stack Frame, is preared to correspond to a function call by C
+	-the stack frame is placed on top of a stack of other previously generated stack frames
+	-the information in a stack frame consists of
+		1) space to hold the value, V, returned by the function
+		2) a pointer to the base of the previous stack frame in the stack
+		3) a return address, which is the address of an instruction to execute in order to resume execution
+			of F's caller after the exectution has terminated
+		4) parameter storage sufficient to hold the actual parameter values a1, a2, a3, ... an if function call
+			F(a1, a2, a3, ... an)
+		5) a set of storage locations sufficient to hold the values of variables declared locally within F
+	
+Stack pointer - The stack pointer is usually a register that contains the top of the stack.
+	-The stack pointer contains the smallest address x such that any address smaller than x is considered garbage,
+	 and any address greater than or equal to x is considered valid. 
+	-In this context, by "the stack", we mean the chunk of memory (and the data structure that occupies it)
+	 that is assigned to each function call in C
+	
+Frame pointer (or base pointer) - (see page 278) if function F() calls funcion G(), there will be a pointer in G's stack that points back to the base
+	of F's stack. When G finishes executing and returns, the system will look for the address stored in G's base pointer,
+	go to that address and resume execution in F's stack frame
+	
+Parameters/local variables - 
+	-Locally declared variables are stored highest in the stack
+	-Parameters are stored 2nd highest
+	-above the space in memory from the local variables is more space for the stack to continue to expand
+	(for instance, if more local variables are declared)
+	
+Circular buffer - AKA circular queue (see pg 281)
+	-COnfining the motion of a queue to a bounded region of memory
+	-Putting a sequential queue representation on a circular track, and letting it wind around and around 
+	as it moves rearward
+	-if queue is declared to have size N elements, than as we insert items into the queue from the address of the last node R (rear), 
+	starting at A, each addresses of all the nodes in the queue are A, A + 1, A + 2, ... A + (N - 1), R
+	if R % N == 0, the queue "wraps around" again and starts from A. 
+	
+Queues in operating systems - (see page 289)
+	-Queues can be used in operating systems to act as buffers that help synchronize the interaciton between two processes that run at different speeds.
+	for example, a queue may be used as a print buffer that sits between a central processing unit and a printer. Output may be produced faster than the printer can print it.
+	The printer gets lines to print, one at a time, from the front of a queue of lines to be printed, which are stored in the print buffer
+	
+Queues in simulations - page 291
+	-There are queues of CLIENTS waiting in a first-come, first-served order for service, and there are SERVERS who dispense the service.
+	Clients arrive and queue-up according to some arrival time discipline. The time a server needs to serve a client is called a service-time interval.
+	These service-time intervals may be of fixed duration, or they may vary. If they vart, they may be described by a service-time distribution.
+	Such a distribution may have an average value and a variance (where the variance is a measure of how broadly or narrowly the 
+	various likely service times are spread out around the average time).
+	Might be interested in measuring these statistics:
+	a) the average waiting time to obtain service
+	b) the variance in the waiting times (how dispersed or spread out the waiting times are)
+	c) the length of the queues 
+	d) the throughput of the system (i.e. how many clients are served per hour)
+	
+Table ADT - an abstract model of a table as a storage device; an abstract storage device that contains table entries that are either empty or are 
+		pairs of the form (K,I), where K is a key and I is some information associated with key K. Distinct entries have distinct keys.
+	-can be represented by 3 types of actual data representations
+	1) hash tables
+	2) AVL trees
+	3) Arrays of table entries sorted in the ascending order of their keys
+	-The Table ADT supports these abastract table operations:
+		-retrieving 
+		-updating
+		-inserting
+		-deleting table entries
+		-enumeration of all entires in the table in increasing order of their keys
+
+Hash tables - is a data structure  that can map keys to values. A hash table uses a hash function to compute an index into an array 
+		of buckets or slots, from which the desired value can be found. Ideally, the hash function will assign each key to a unique bucket,
+		 but most hash table designs employ an imperfect hash function, which might cause hash collisions where the hash function 
+		generates the same index for more than one key. Such collisions must be accommodated in some way.
+		In a well-dimensioned hash table, the average cost (number of instructions) for each lookup is independent
+		 of the number of elements stored in the table. Many hash table designs also allow arbitrary insertions and deletions of key-value pairs,
+		 at constant average cost per operation.
+		In many situations, hash tables turn out to be more efficient than search trees or any other table lookup structure.
+		 For this reason, they are widely used in many kinds of computer software, particularly for associative arrays, database indexing, caches, and sets.
+	-A type of Table ADT (others are AVL trees, arrays of table entries sorted in the ascending order of their keys)
+	-can be represented in 3 ways:
+	1) arrays of structs kept in ascending sequential order of their keys
+	2) AVL trees 
+	3) Hash Tables using double hashing
+	-even in sparsely occupied hash tables, collisions are relatively frequent
+	
+Hash function - a mapping h(K), that sends a key K onto the address of a table entry in table T.
+	- a Many-to-One mapping - the whole point of hashin is to take a large selection of keys, and map each one so that they all
+	fit in a much smaller key-space
+	-inevtiable that there will be collisions; when the hash function maps 2 keys to the same index
+	-Time/Space Tradeoff - if we make the Hash Table large (relative to the number of elements we put in the table), there will be fewer collisions, lookup will be very fast
+		If we make the Hash Table small (relative to the number of elements we put in the table), there will be more collsions, therefore lookup	
+			will take longer, but we'll need less space to store table
+	
+Open addressing (with Linear Probing) - page 455 - a collision resolution policy (along with Chaining and Buckets)
+	-Appealing bc simple to understand and implement
+	-When a new key is inserted into a non-full table (where a full table is a table with only 1 open location - 1 space is always left open),
+	the hash function maps it to an index in the table. If the index is empty, the new key is inserted into that index. If the index already contains a key (ie if
+	there is a collision), use "linear probing" to decrement the index by a given amount (called the probe decrement) and search those indices for an empty space
+	in which to insert the new key.
+	
+Double hashing - alternative to linear probing; uses NONlinear probing by computing different probe decrements for different keys.
+	-hash index is computed by hash function h(x), probe decrement is computing by a 2nd function p(x)
+		h(x) != p(x)
+	-when 2 keys collide at the same initial hash address, they usually follow different probe sequences when a search s made for the first empty table location
+	-when colliding keys trace out different search paths (when 2 keys collide at the same itial hash address, but then probe the table for an empty
+		address in different ways), they will tend to find empty locations more quickly
+	-extraordinarily good performance, but not too difficult to understand and implement
+	-1 of 3 ways  to represent abstract tables (ie Hash Tables) along with 1) Arrays of structs kept in ascending sequential order
+	according to their keys and 2) AVL trees
+	-Does not lead to primary clustering
+	
+Separate chaining - simply placing all keys that collide at a single hash address on a linked list starting at that address
+	-3rd method of collision resolution
+
+Hashing with Buckets - Dividing large hash tables into smaller sub-tables, each of which is arranged sequentially in increasing order of their keys.
+	A hash function maps a key to a particular sub-table, then binary search is used to find that key's address within that subtable
+	-mediocre performance if the table is stored in primary memory (RAM), but superior performance if table is stored on relatively slow
+	rotating external memory (such as disks).
+	
+Clustering - a cluster is a sequence of adjacent occupied entries in a has table. Clusters have no empty keys in them, and consist of contiguous runs
+	of occupied entries.
+	-Primary Clustering - linear probing results in clusters, and the rate at which the clusters grow starts to increase, since more of the 
+	address space that new insertions are mapped to by the hash function become occupied. These clusters start to expand downwards (since 
+	the probe DECREMENTS), and start to combine with other clusters.
+	-Linear Probing leads to the formation of primary clusters, whereas the use of double hashing does not lead to primary clustering
+	-an ideal hash function maps keys to addresses in a table in a uniform and random fashion; clustering is the result of the opposite
+	
+	
+Folding - a key, K, is divided into sections that are added, subtracted, or multiplied together
+	-a technique employed by hash functions
+	
+Middle-squaring - a middle section of K, treated as a number, is squared
+	-a technique employed by hash functions
+	
+Truncation - all but the low-order portion of key K is deleted
+	-a technique employed by hash functions
+	
+Trees - 
+
+AVL trees -
+	
+Root/leaf/internal node - 
+	Root - top-most node w/ no parents
+	Leaves - bottom-most node w/ no children
+	Internal node - a node that is neither teh Root or a leaf - has both a parent and children
+	
+Tree levels - the level n that a node is on is equal to the minimum number of line segments that it takes to draw the path from the root to that node
+	
+Binary tree - either an empty tree or a node that has left and right subtrees that are binary trees. (each parent can have at most 2 chldren)
+	traversal of a binary tree - a proces that visits each node in the tree exactly once in some specified order
+	
+Pre-/Post-/In-order traversal - 
+	-post-order traversal of an expression tree representing an algebraic expression yields postfix instruction sequence that can be used by a postfix interpreter to
+	calculate the value of the expression
+	
+Balanced binary tree - 
+	
+Heap - 
+	
+BST - 
+	-Searching a BST: Worst Case: O(n) Average Case: O(log n)
+	

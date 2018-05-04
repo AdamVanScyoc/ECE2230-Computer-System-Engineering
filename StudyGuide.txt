@@ -1,0 +1,195 @@
+	ECE 223 – Engineering Data Structures
+	Study Topics
+
+Abstract Data Types
+	- Structures such as lists, stacks, sets, trees, and queues
+	- Can be represented in a variey of different ways by lower-level representations
+	- Two broad classes:
+		- Sequential representations (arrays)
+		- Linked representations (linked lists)
+	- First classs - possible to create multiple instances of it w/out affecting the others
+
+Container 
+	-an ADT
+	-examaples: stack, queue, priority queue
+	-store objects in an organized way that follows specific access rules. 
+	- Containers can be characterized by the following three properties:
+		- access, that is the way of accessing the objects of the container. In the case of arrays, access is done with the array index.
+		 In the case of stacks, access is done according to the LIFO (last in, first out) order and in the case of queues it is done according to the FIFO (first in, first out) order;
+		- storage, that is the way of storing the objects of the container;
+		- traversal, that is the way of traversing the objects of the container.
+
+	Container classes are expected to implement methods to do the following:
+
+	    create an empty container (constructor);
+	    insert objects into the container;
+	    delete objects from the container;
+	    delete all the objects in the container (clear);
+	    access the objects in the container;
+	    access the number of objects in the container (count).
+
+	Containers are sometimes implemented in conjunction with iterators. (example: cursor in guitardb)
+
+Initialize
+	- creates an empty container (constructor), like guitardb or h_inventory
+	- contains no nodes after initialization
+
+Finalize
+	- destroys a container
+	- not responisble for freeing data stored in a list node, only memory allocated for the listnode structures themselves
+
+Insert
+	in a linked list:
+	- insert at head of (singly-linked) list:
+
+		struct listnode * temp = malloc(sizeof(struct listnode);
+		temp->data = <get data from user input or whatever>
+		temp->next = head;
+		head = temp;
+	- insert at head of (two-way-linked) list:
+
+		struct listnode * temp = malloc(sizeof(struct listnode));
+		temp->data = <get data>;
+		temp->left = NULL;
+		temp->right = head;
+		head->left = temp;
+		head = temp;
+
+	- insert into unsorted array @ element # index
+		if (check list not full)
+		struct guitardb_guitar * newguitar = malloc(sizeof(struct guitardb_guitar));
+		struct guitardb_guitar * temp;
+		temp = guitardb->list[index];
+		guitardb->list[index] = newguitar;
+		guitardb->list[last_element + 1] = temp;
+
+	- insert before into singly linked list
+		<iterate through/search list for desired position to insert>
+		struct listnode * temp = malloc(sizeof(struct listnode));
+		temp->data = <get data>;
+		temp->next = list->current->next;
+		list->current->next = temp;
+		// temp becomes current list node - current becomes temp's successor
+
+	- insert before into doubly-linked list
+		<iterate through/ search list for desired position to insert>
+		struct listnode * temp = malloc(sizeof(struct listnode));
+		// prepare new node for insert
+		temp->data = <get data>;
+		temp->right = current;
+		temp->left = current->left;
+		// insert new node
+		current->left->right = temp;
+		current->left = temp;
+		current = temp;
+
+Remove
+
+Empty
+	- a function that abstracts away the actual module variables (information hiding)
+	- assuming there's a struct containing, for instance, linked-list node data
+	
+Full
+Iterator
+First
+	-part of an iterator
+Next
+	-like FIrst, part of an iterator
+Array
+	-1 way of implementing a container
+Pointer
+Aliasing
+	- two pointers pointing to the same thing
+	- potential source of bugs (changing thing one pointer points to w/out realizing the thing the other pointer points to also changes [because they are the same thing])
+	void f(int * p, int * q)
+	{
+		while (*p == *q)
+			*p++;
+	}
+		-works fine except in the case where p = q, then creates an infinite loop
+		-solution
+	void f(int * p, int * q)
+	{
+		if (p == q)printf("error\n");
+		while (*p == *q)
+			*p++;
+	}
+Dereferencing
+Void pointer
+Dangling reference
+Linked list
+	- (page 38) A linear linked lists (or linked list for short) is a sequence of nodes in which each node, except the last, links to a successor node.
+	- consist of a system of nodes an dpointers
+	- usually each node is a typdef of a struct with a link and the data the node contains
+
+Single-linked list
+	- each node is a struct that contains 2 members:
+		-a pointer to the data being stored
+		-a pointer to the next node (or null if its the last node)
+
+Double-linked list (AKA a two-way linked list or a symmetrically linked list)
+	- each node is a struct that contains 3 members:
+		-a pointer to the data being stored
+		-a pointer to the next node in the list (or null if this node is  the last node)
+		-a pointer to the previous node in the list (or null if this node is the first node)
+
+Circular-linked list (AKA two-way ring)
+	- each node is a pointer to a struct (just like a two-way linked list) except:
+		-the next pointer of the "last" node (tail) points to the "first" node (head)
+		-the previous pointer of the "first" node (head) points to the "last" node (tail)
+	- allows you to "rotate" the list - in other words, its easy to change which node is "head" and which is "tail"
+
+Recursion
+
+Towers of Hanoi
+	-recursive; contains 2 recursive calls (calls MoveSmallerStack() ) twice
+	-
+First class ADT
+Modules
+	- All the types, variables and functions that all pertain to a certain thing or action go into a single a module
+Information hiding
+Coupling
+	- the description of how 2 modules interact with each other
+	- low coupling is desireable
+	- one way of achieving this is with functions like first(), next() etc. that access varaibles and data that are otherwise abstracted away and invisble 
+		to other modules
+
+Opaque type
+	- example of information hiding
+	- the code that has the object of that type does not have access to information about that type
+	- h_inventory does not have access to list
+	- dereferencing an opaque type results in an "incomplete type" error, because the actual definition of that type is not seen by the module that's using it
+	- typdef struct list * list;
+		 - where struct list is defined in a different module
+Constructor
+Destructor
+Priority queue
+
+Stepwise refinement
+	- The process of filling in specific programming details in a series of specific steps is called stepwise refinement.
+		For Example(page 39): in the book, "Program Strategies" specify high-level goals to accomplish. They are used as starting points for the development of C programs. They are intedned 
+		to help us grasp how algorithms work, by expressing concisely the essential plans, methods, and goals that lie at the heart of an algorithm's design.
+		If the actual programing details are given too soon, they can often obscure what is really going on. 
+	- Synonym for "Top-Down PRogramming"
+
+Top-down programming
+	- See "Stepwise Refinement"
+
+Bottom-up programming
+Proving and Testing
+Pre- and post-conditions
+Chaining rule
+Back substitution
+	- rule when proving a program that states that if you have post-condition in terms of some variable x, and you have an assignment statement x = <something>
+	then you substitute the post condition into the precondition to the assignment statement <pre = post(x)> 
+If-then-else rule
+Loop invariant
+Bottom-up testing
+
+Driver
+	-a piece of code whose sole purpose is to facilitate testing of another piece of code
+	-usually not included in finished product
+
+Stub
+	-a piece of dummy code or a dummy function whose sole purpose is to be called by a different piece of code that is being tested but that relies on functions or code
+		that do not exist yet
